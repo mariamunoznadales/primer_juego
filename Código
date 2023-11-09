@@ -1,0 +1,51 @@
+import random
+
+numero_secreto = random.randint(1, 100)
+
+
+intentos = 0
+adivinado = False
+
+
+while not adivinado:
+    suposicion = input("Ingresa un número (entre 1 y 100): ")
+    
+    
+    if not suposicion.isdigit():
+        print("Por favor, ingresa un número válido.")
+        continue
+    
+    suposicion = int(suposicion)
+    
+
+    if suposicion < 1 or suposicion > 100:
+        print("El número debe estar en el rango de 1 a 100.")
+        continue
+    intentos += 1
+
+    
+    if suposicion < numero_secreto:
+        print("Demasiado bajo. ")
+    elif suposicion > numero_secreto:
+        print("Demasiado alto. ")
+    else:
+        print("Adivinaste el número en {intentos} intentos")
+        adivinado = True
+
+    
+    print("Intentos realizados: {intentos}")
+
+
+
+print("Adivinaste el número en {intentos} intentos!")
+adivinado = True
+
+jugar_nuevamente = input("Quieres volver a jugar? (sí/no): ")
+
+if jugar_nuevamente.lower() == 'sí':
+    numero_secreto = random.randint(1, 100)
+    intentos = 0
+    adivinado = False
+    print("Vamos a volver a jugar")
+else:
+    print("Gracias por jugar")
